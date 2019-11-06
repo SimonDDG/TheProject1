@@ -7,13 +7,28 @@ public class GameLoop {
 
     Terminal terminal;
     Apple apple;
+    Arena arena;
+    Snake snake;
     int randomX;
     int randomY;
 
 
-    public GameLoop(Terminal terminal, Apple apple) {
+    public GameLoop(Terminal terminal, Apple apple, Arena arena, Snake snake) {
         this.terminal = terminal;
         this.apple = apple;
+        this.arena = arena;
+        this.snake = snake;
+    }
+
+    public void runGame() throws IOException {
+
+        arena.printWall();
+
+        do {
+
+            snake.input();
+
+        } while (true);
     }
 
     // KeyInput
