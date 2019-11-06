@@ -20,9 +20,11 @@ public class GameLoop {
         this.snake = snake;
     }
 
-    public void runGame() throws IOException {
+    public void runGame() throws Exception {
 
         arena.printWall();
+        snake.printSnake();
+        terminal.flush();
 
 //        do {
 //
@@ -30,7 +32,6 @@ public class GameLoop {
 //
 //        } while (true);
 
-        terminal.flush();
     }
 
     // KeyInput

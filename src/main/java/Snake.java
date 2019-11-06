@@ -22,12 +22,19 @@ public class Snake {
         this.terminal = terminal;
     }
 
-    public void printSnake(){
-//
-//        posses.add(new )
-//        for (int i = 0; i < wallLength; i++) {
-//            wall.add(new Pos(5, 5 + i));
-//        }
+    public void printSnake() throws Exception {
+        createSnake();
+        for (int i = 0; i < posses.size(); i++) {
+            terminal.setCursorPosition(posses.get(i).getX(), posses.get(i).getY());
+            terminal.putCharacter('\u2588');
+        }
+    }
+
+    private void createSnake(){
+        int originLength = 3;
+        for (int i = 0; i < originLength; i++) {
+            posses.add(new Position(20, 10 + i));
+        }
     }
 
     public void constantMove() throws IOException {
