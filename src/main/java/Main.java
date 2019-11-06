@@ -8,8 +8,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Terminal terminal = terminalFactory.createTerminal();
- 	 Apple apple = new Apple(terminal);
-	GameLoop test = new GameLoop(t);
+
+        terminal.setCursorVisible(false);
+
+        Apple apple = new Apple(terminal);
+        Arena arena = new Arena(terminal);
+        Snake snake = new Snake(terminal);
+        GameLoop test = new GameLoop(terminal, apple);
+
+
+        arena.printWall();
 
     }
 }

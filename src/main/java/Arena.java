@@ -5,31 +5,39 @@ import java.util.ArrayList;
 
 public class Arena {
 
+    Terminal terminal;
+
     public ArrayList<Position> wall1 = new ArrayList<>();
     public ArrayList<Position> wall2 = new ArrayList<>();
     public ArrayList<Position> wall3 = new ArrayList<>();
     public ArrayList<Position> wall4 = new ArrayList<>();
 
+    public Arena(Terminal terminal) {
+        this.terminal = terminal;
+    }
+
     public void createWall() {
-        int wall1Lenght = 25;
+        int wall1Lenght = 26;
         for (int i = 0; i < wall1Lenght; i++) {
-            wall1.add(new Position(1, 1+i));
+            wall1.add(new Position(0, 0+i));
         }
-        int wall2Lenght = 25;
+        int wall2Lenght = 80;
         for (int i = 0; i < wall2Lenght; i++) {
-            wall2.add(new Position(5, 5+i));
+            wall2.add(new Position( 0+i, 0));
         }
-        int wall3Lenght = 25;
+        int wall3Lenght = 26;
         for (int i = 0; i < wall3Lenght; i++) {
-            wall3.add(new Position(10, 10+i));
+            wall3.add(new Position(80, 0+i));
         }
-        int wall4Lenght = 25;
+        int wall4Lenght = 80;
         for (int i = 0; i < wall4Lenght; i++) {
-            wall4.add(new Position(15, 15+i));
+            wall4.add(new Position(0+i, 80));
         }
     }
 
-    public void printWall(Terminal terminal) throws IOException {
+    public void printWall() throws IOException {
+
+        createWall();
 
         for (int i = 0; i < wall1.size(); i++) {
             terminal.setCursorPosition(wall1.get(i).getX(), wall1.get(i).getY());

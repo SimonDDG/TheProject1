@@ -2,6 +2,7 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,15 @@ public class Snake {
     private List<Position> posses = new ArrayList<>();
     private int move;
     private int direction = 1;
+    private Terminal terminal;
 
     //växa
     //KeyInput
+
+
+    public Snake(Terminal terminal) {
+        this.terminal = terminal;
+    }
 
     public void printSnake(){
 //
@@ -23,7 +30,7 @@ public class Snake {
 //        }
     }
 
-    public void constantMove() {
+    public void constantMove() throws IOException {
         if (move % 50 == 0) {
             moving();
             move = 0;
@@ -31,7 +38,7 @@ public class Snake {
         move++;
     }
 
-    public void moving(){
+    public void moving() throws IOException {
 
         switch (direction){
             case 1: //upp
@@ -47,7 +54,7 @@ public class Snake {
         }
     }
 
-    public void input(KeyStroke keyStroke){
+    public void input(KeyStroke keyStroke) throws IOException {
 
         KeyType type = keyStroke.getKeyType();
 

@@ -6,12 +6,14 @@ import java.util.Random;
 public class GameLoop {
 
     Terminal terminal;
+    Apple apple;
     int randomX;
     int randomY;
 
 
-    public GameLoop(Terminal terminal) {
+    public GameLoop(Terminal terminal, Apple apple) {
         this.terminal = terminal;
+        this.apple = apple;
     }
 
     // KeyInput
@@ -33,27 +35,19 @@ public class GameLoop {
 
         // Do-while loop to check if x,y clashes with snake body
         // While clash is true, a new randomised position will be created
-        while (true)
+        while (true) {
             randomX = r.nextInt(80);    // set boundaries within the wall
             randomY = r.nextInt(24);    // set boundaries within the wall
-            if (randomNewAppleKrockarInteMedSnake) {
-                break;
+//            if (randomNewAppleKrockarInteMedSnake) {
+//                break;
+//            }
             }
         }
 
         // Creating a position with acceptable randomised x,y
         Position positionApple = new Position(randomX, randomY);
-        return positionApple;
+//        return positionApple;
     } // END createApplePosition()
-
-
-    // Printing new apple
-    public void printApple() throws IOException {
-        Position p = createApplePosition();
-        terminal.setCursorPosition(p.getX(), p.getY());
-        terminal.putCharacter('APPLESYMBOL');
-        terminal.flush();
-    }
 
 
     // Keep score AND Remove old apple (to be called from snake growing method)
@@ -65,4 +59,4 @@ public class GameLoop {
     // Check if snake hits wall = game over
 
 
-}
+

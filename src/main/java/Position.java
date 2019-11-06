@@ -24,11 +24,4 @@ public class Position {
         this.y = y;
     }
 
-    // Ha koll på x,y
-
-    int x;
-    int y;
-
-    public Position(int x, int y) {
-    }
 }
