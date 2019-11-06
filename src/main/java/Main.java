@@ -7,7 +7,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
-        Terminal terminal = terminalFactory.createTerminal();
+        Terminal t = terminalFactory.createTerminal();
+
+        GameLoop test = new GameLoop(t);
 /*
         terminal.setCursorPosition(1, 1);
         terminal.putCharacter('A');
