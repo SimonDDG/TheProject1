@@ -1,20 +1,19 @@
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("hello world");
+    public static void main(String[] args) throws IOException {
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+        Terminal terminal = terminalFactory.createTerminal();
+/*
+        terminal.setCursorPosition(1, 1);
+        terminal.putCharacter('A');
+        terminal.flush();
 
-        System.out.println("hoppas det funkar");
+        */
 
-        System.out.println("TJENARE");
-        System.out.println("deleted ANOTHER BRANCH");
-
-        System.out.println("Hejsan");
-        System.out.println("Detta är Robins första rad kod");
-
-        System.out.println("hoppas det funkar igen");
-        System.out.println("Simon lägger till en grej till");
-
-
-        System.out.println("Branch: SamiSami");
     }
 }
