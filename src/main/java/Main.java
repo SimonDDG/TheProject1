@@ -4,5 +4,6 @@ public class Main {
         System.out.println("hello world");
         System.out.println("hoppas det funkar");
         System.out.println("hoppas det funkar igen");
+        System.out.println("Simon lägger till en grej till");
     }
 }
