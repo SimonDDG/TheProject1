@@ -24,11 +24,13 @@ public class GameLoop {
 
         arena.printWall();
 
-        do {
+//        do {
+//
+//            snake.input();
+//
+//        } while (true);
 
-            snake.input();
-
-        } while (true);
+        terminal.flush();
     }
 
     // KeyInput

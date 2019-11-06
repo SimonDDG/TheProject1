@@ -1,6 +1,8 @@
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.io.IOException;
+
 public class StartStop {
 
     Terminal terminal;
@@ -11,16 +13,19 @@ public class StartStop {
 
     public void start() throws Exception {
 
-        KeyStroke keyStroke = null;
         printStartScreen();
+        KeyStroke keyStroke = null;
 
         do {
             Thread.sleep(5);
             keyStroke = terminal.pollInput();
         } while (keyStroke == null);
+
+        terminal.clearScreen();
     }
 
-    private void printStartScreen(){
-
+    private void printStartScreen() throws Exception {
+        terminal.setCursorPosition(30, 15);
+        terminal.putCharacter('\u2605');
     }
 }
