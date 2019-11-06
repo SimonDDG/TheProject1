@@ -8,12 +8,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Terminal terminal = terminalFactory.createTerminal();
-/*
-        terminal.setCursorPosition(1, 1);
+
+        Apple apple = new Apple(terminal);
+
+      /*  terminal.setCursorPosition(1, 1);
         terminal.putCharacter('A');
         terminal.flush();
 
-        */
-
+*/
     }
 }
