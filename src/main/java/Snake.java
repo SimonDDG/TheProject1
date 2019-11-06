@@ -10,11 +10,18 @@ public class Snake {
     private Position pos;
     private List<Position> posses = new ArrayList<>();
     private int move;
-    private int direction;
+    private int direction = 1;
 
     //växa
     //KeyInput
 
+    public void printSnake(){
+//
+//        posses.add(new )
+//        for (int i = 0; i < wallLength; i++) {
+//            wall.add(new Pos(5, 5 + i));
+//        }
+    }
 
     public void constantMove() {
         if (move % 50 == 0) {
@@ -27,13 +34,13 @@ public class Snake {
     public void moving(){
 
         switch (direction){
-            case 1:
+            case 1: //upp
                 break;
-            case 2:
+            case 2: //ner
                 break;
-            case 3:
+            case 3: //vänster
                 break;
-            case 4:
+            case 4: //höger
                 break;
             default:
                 terminal.close();
