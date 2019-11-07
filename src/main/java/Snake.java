@@ -12,14 +12,17 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 30;
+    private int level = 50; // Går att ändra svårighetsgrad om man ändra level
+    boolean clash = false;
+    Arena arena;
     int changeX = 0;
     int changeY = 0;
 
     Position applePos; //temp variabel för äpplet, tas bort sen!!!
 
-    public Snake(Terminal terminal) throws Exception {
+    public Snake(Terminal terminal, Arena arena) throws Exception {
         this.terminal = terminal;
+        this.arena = arena;
         createSnake();
     }
 
@@ -41,12 +44,35 @@ public class Snake {
         }
     }
 
-    private void updateSnake(){
+    private void updateSnake(int changeX, int changeY){
+
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
+
+        // Call check snake clash method, if snake eats itself = game over
     }
+
+    // SAMI 6
+    public void checkClash() throws Exception {
+        int newX = snakePositions.get(0).getX();
+        int newY = snakePositions.get(0).getY();
+
+        for (Position p : snakePositions) {
+
+        }
+        clash = arena.isWall(newX, newY);
+        if (clash) {
+           endGame();
+        }
+    }
+
+    public void endGame() throws Exception {
+        this.direction = 0;
+    }
+
+    // END SAMI 6
 
     public void constantMove() throws Exception {
 

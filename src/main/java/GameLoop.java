@@ -23,7 +23,6 @@ public class GameLoop {
 
     public void runGame() throws Exception {
 
-
         boolean running = true;
 
         arena.printWall();
@@ -37,6 +36,7 @@ public class GameLoop {
             do {
                 Thread.sleep(5);
                 snake.constantMove();
+                snake.checkClash();
                 snake.grow();
                 keyStroke = terminal.pollInput();
 
@@ -85,10 +85,10 @@ public class GameLoop {
     // Keep score AND Remove old apple (to be called from snake growing method)
 
 
-    // Check if snake eats itself = game over
+    // Check if snake eats itself = game over SAMI
 
 
-    // Check if snake hits wall = game over
+    // Check if snake hits wall = game over SAMI
 
 
 

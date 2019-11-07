@@ -87,3 +87,4 @@ modules.xml
 *.class
 .idea/vcs.xml
 .idea/workspace.xml
+target/classes/META-INF/Grupp4.kotlin_module
