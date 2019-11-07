@@ -25,8 +25,7 @@ public class Snake {
     public void printSnake() throws Exception {
         createSnake();
         for (int i = 0; i < posses.size(); i++) {
-            terminal.setCursorPosition(posses.get(i).getX(), posses.get(i).getY());
-            terminal.putCharacter('\u2588');
+            printStuff(posses.get(i));
         }
     }
 
@@ -38,7 +37,7 @@ public class Snake {
     }
 
     public void constantMove() throws IOException {
-        if (move % 50 == 0) {
+        if (move == 50) {
             moving();
             move = 0;
         }
@@ -87,6 +86,11 @@ public class Snake {
                 System.out.println("quit");
                 terminal.close();
         }
+    }
+
+    private void printStuff(Position p) throws Exception {
+        terminal.setCursorPosition(p.getX(), p.getY());
+        terminal.putCharacter('\u2588');
     }
 
 }
