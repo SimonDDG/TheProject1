@@ -24,6 +24,7 @@ public class GameLoop {
     public void runGame() throws Exception {
 
         int counter = 0;
+        boolean running = true;
 
         arena.printWall();
         snake.printSnake();
@@ -44,9 +45,9 @@ public class GameLoop {
                 keyStroke = terminal.pollInput();
             } while (keyStroke == null);
 
-            snake.readInput(keyStroke);
+            running = snake.readInput(keyStroke);
 
-        } while (true);
+        } while (running);
 
     }
 

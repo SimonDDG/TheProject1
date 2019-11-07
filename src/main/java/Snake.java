@@ -64,7 +64,7 @@ public class Snake {
         }
     }
 
-    public void readInput(KeyStroke keyStroke) throws IOException {
+    public boolean readInput(KeyStroke keyStroke) throws IOException {
 
         KeyType type = keyStroke.getKeyType();
 
@@ -106,9 +106,11 @@ public class Snake {
                     break;
                 }
             case Escape:
-                System.out.println("quit");
+                System.out.println("----> QUIT <----");
                 terminal.close();
+                return false;
         }
+        return true;
     }
 
     private void printStuff(Position p) throws Exception {
