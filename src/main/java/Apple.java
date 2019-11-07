@@ -8,10 +8,10 @@ public class Apple {
     Terminal terminal;
     Snake snake;
     final char apple = 'o';
-    int randomNumberX = ThreadLocalRandom.current().nextInt(1, 79);
-    int randomNumberY = ThreadLocalRandom.current().nextInt(1, 24);
-    int appleX = randomNumberX;
-    int appleY = randomNumberY;
+    int appleX;
+    int appleY;
+
+    Position applePosition = new Position(appleX, appleY);
     //test
 
 
@@ -24,8 +24,19 @@ public class Apple {
     }
 
     public void putApple() throws IOException {
+        System.out.println("SKRIVER ÄPPLE");
+        int randomNumberX = ThreadLocalRandom.current().nextInt(1, 79);
+        int randomNumberY = ThreadLocalRandom.current().nextInt(1, 24);
+        appleX = randomNumberX;
+        appleY = randomNumberY;
+        applePosition.setX(appleX);
+        applePosition.setY(appleY);
             terminal.setCursorPosition(appleX, appleY);
             terminal.putCharacter(apple);
+    }
+
+    public Position getApplePosition() {
+        return applePosition;
     }
 
     public void spawnApple(int x, int y) throws IOException {
@@ -35,7 +46,7 @@ public class Apple {
 //        } else System.out.println("");
 //    }
 
-
+// SAMI
 //        Random r = new Random();
 //        Position applePosition = new Position(r.nextInt(20), r.nextInt(30));
 //        terminal.setCursorPosition(applePosition.x, applePosition.y);

@@ -19,15 +19,15 @@ public class Arena {
     public void createWall() {
         int wall1Lenght = 26;
         for (int i = 0; i < wall1Lenght; i++) {
-            wall1.add(new Position(0, 0+i));
+            wall1.add(new Position(0, 1+i));
         }
         int wall2Lenght = 80;
         for (int i = 0; i < wall2Lenght; i++) {
-            wall2.add(new Position( 0+i, 0));
+            wall2.add(new Position( 0+i, 1));
         }
         int wall3Lenght = 26;
         for (int i = 0; i < wall3Lenght; i++) {
-            wall3.add(new Position(80, 0+i));
+            wall3.add(new Position(80, 1+i));
         }
         int wall4Lenght = 80;
         for (int i = 0; i < wall4Lenght; i++) {

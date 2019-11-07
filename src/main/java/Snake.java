@@ -12,17 +12,19 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 50; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 15; // Går att ändra svårighetsgrad om man ändra level
     boolean clash = false;
     Arena arena;
     int changeX = 0;
     int changeY = 0;
+    private Apple apple;
 
     Position applePos; //temp variabel för äpplet, tas bort sen!!!
 
-    public Snake(Terminal terminal, Arena arena) throws Exception {
+    public Snake(Terminal terminal, Arena arena, Apple apple) throws Exception {
         this.terminal = terminal;
         this.arena = arena;
+        this.apple = apple;
         createSnake();
     }
 
@@ -91,28 +93,24 @@ public class Snake {
                 changeY = -1;
                 updateSnake();
                 printSnake();
-                System.out.println("Upp");
                 break;
             case 2: //ner
                 changeX = 0;
                 changeY = 1;
                 updateSnake();
                 printSnake();
-                System.out.println("Ner");
                 break;
             case 3: //vänster
                 changeX = -1;
                 changeY = 0;
                 updateSnake();
                 printSnake();
-                System.out.println("Vänster");
                 break;
             case 4: //höger
                 changeX = 1;
                 changeY = 0;
                 updateSnake();
                 printSnake();
-                System.out.println("höger");
                 break;
             default:
                 terminal.close();
@@ -177,9 +175,11 @@ public class Snake {
     }
 
     public void grow() throws Exception { //hämtar appels position objekt. "Position applePos"
+        applePos = apple.getApplePosition();
         if (snakePositions.get(0).getX() == applePos.getX() && snakePositions.get(0).getY() == applePos.getY()){
-
-            int antalSvans = 10; //för att testa att koden funkar, så ökar den med 10 svansar
+            apple.putApple();
+            terminal.flush();
+            int antalSvans = 3; //för att testa att koden funkar, så ökar den med 10 svansar
 
             for (int i = 0; i < antalSvans; i++) {
                 Position gamlaHuvudet = snakePositions.get(0);
@@ -191,11 +191,11 @@ public class Snake {
     }
 
     //tillfällig metod för att skapa ett tillfälligt äpple.
-    public Position tempApple() throws Exception {
-        applePos = new Position(40,15);
-        terminal.setCursorPosition(applePos.getX(), applePos.getY());
-        terminal.putCharacter('\uF8FF');
-        return applePos;
-    }
+//    public Position tempApple() throws Exception {
+//        applePos = new Position(40,15);
+//        terminal.setCursorPosition(applePos.getX(), applePos.getY());
+//        terminal.putCharacter('\uF8FF');
+//        return applePos;
+//    }
 
 }

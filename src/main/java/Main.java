@@ -16,7 +16,7 @@ public class Main {
 
         Apple apple = new Apple(terminal);
         Arena arena = new Arena(terminal);
-        Snake snake = new Snake(terminal, arena);
+        Snake snake = new Snake(terminal, arena, apple);
         GameLoop gameLoop = new GameLoop(terminal, apple, arena, snake);
         StartStop startStop = new StartStop(terminal);
 

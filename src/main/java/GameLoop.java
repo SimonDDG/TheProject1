@@ -28,7 +28,7 @@ public class GameLoop {
         arena.printWall();
         snake.printSnake();
         apple.putApple();
-        snake.tempApple(); //temp lösning så att det ploppar upp ett äpple, tas bort.
+//        snake.tempApple(); //temp lösning så att det ploppar upp ett äpple, tas bort.
         terminal.flush();
 
         do {
