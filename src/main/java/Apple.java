@@ -12,6 +12,7 @@ public class Apple {
     int randomNumberY = ThreadLocalRandom.current().nextInt(1, 24);
     int appleX = randomNumberX;
     int appleY = randomNumberY;
+    //test
 
 
     //Äpplet hämtar arena position
