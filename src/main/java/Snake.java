@@ -14,6 +14,7 @@ public class Snake {
     private int direction = 1;
     private Terminal terminal;
     private int level = 50; // Går att ändra svårighetsgrad om man ändra level
+    boolean clash = false;
 
 
     //växa
@@ -44,11 +45,34 @@ public class Snake {
     }
 
     private void updateSnake(int changeX, int changeY){
+
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
+
+        // Call check snake clash method, if snake eats itself = game over
     }
+
+    // SAMI 6
+    public void checkClash(List<Position> snakePositions) throws Exception {
+
+
+        for (Position p : snakePositions) {
+
+        }
+
+        if (clash) {
+           endGame();
+        }
+    }
+
+    public void endGame() throws Exception {
+        this.direction = 0;
+        moving();
+    }
+
+    // END SAMI 6
 
     public void constantMove() throws Exception {
 
