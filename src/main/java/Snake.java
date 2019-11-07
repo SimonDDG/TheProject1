@@ -44,7 +44,7 @@ public class Snake {
         }
     }
 
-    private void updateSnake(int changeX, int changeY){
+    private void updateSnake(){
 
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
