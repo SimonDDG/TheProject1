@@ -13,26 +13,30 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 200; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 150; // Går att ändra svårighetsgrad om man ändra level
 
 
     //växa
     //KeyInput
 
 
-    public Snake(Terminal terminal) {
+    public Snake(Terminal terminal) throws Exception {
         this.terminal = terminal;
+        createSnake();
     }
 
     public void printSnake() throws Exception {
-        createSnake();
         for (int i = 0; i < snakePositions.size(); i++) {
-            printStuff(snakePositions.get(i));
 
+            Position p  = snakePositions.get(i);
+
+            terminal.setCursorPosition(p.getX(), p.getY());
+            terminal.putCharacter('\u2588');
         }
+        eraseTail();
     }
 
-    private void createSnake(){
+    private void createSnake() throws Exception {
         int originLength = 3;
         for (int i = 0; i < originLength; i++) {
             snakePositions.add(new Position(20, 10 + i));
@@ -40,10 +44,13 @@ public class Snake {
     }
 
     private void updateSnake(){
-        snakePositions.get(0);
+        Position gamlaHuvudet = snakePositions.get(0);
+        Position nyaHuvudet = new Position(gamlaHuvudet.getX(), gamlaHuvudet.getY() - 1);//Ändra + 1
+        snakePositions.add(0, nyaHuvudet);
+        snakePositions.remove(snakePositions.size() - 1);
     }
 
-    public void constantMove() throws IOException {
+    public void constantMove() throws Exception {
 
         if (counter == level) {
             moving();
@@ -52,11 +59,14 @@ public class Snake {
         counter++;
     }
 
-    public void moving() throws IOException {
+    public void moving() throws Exception {
 
         switch (direction){
             case 1: //upp
-                // y--, y-variabeln skall minskas
+                updateSnake();// y--, y-variabeln skall minskas
+                printSnake();
+//                eraseTail();
+                terminal.flush();
                 System.out.println("Upp");
                 break;
             case 2: //ner
@@ -122,9 +132,11 @@ public class Snake {
         return true;
     }
 
-    private void printStuff(Position p) throws Exception {
+    private void eraseTail() throws Exception {
+        Position p = snakePositions.get(snakePositions.size()-1);
         terminal.setCursorPosition(p.getX(), p.getY());
-        terminal.putCharacter('\u2588');
+        terminal.putCharacter(' ');
+
     }
 
 }
