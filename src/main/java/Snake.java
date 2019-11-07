@@ -13,7 +13,7 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 150; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 50; // Går att ändra svårighetsgrad om man ändra level
 
 
     //växa
@@ -37,15 +37,15 @@ public class Snake {
     }
 
     private void createSnake() throws Exception {
-        int originLength = 3;
+        int originLength = 10;
         for (int i = 0; i < originLength; i++) {
             snakePositions.add(new Position(20, 10 + i));
         }
     }
 
-    private void updateSnake(){
+    private void updateSnake(int changeX, int changeY){
         Position gamlaHuvudet = snakePositions.get(0);
-        Position nyaHuvudet = new Position(gamlaHuvudet.getX(), gamlaHuvudet.getY() - 1);//Ändra + 1
+        Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
     }
@@ -63,24 +63,29 @@ public class Snake {
 
         switch (direction){
             case 1: //upp
-                updateSnake();// y--, y-variabeln skall minskas
+                updateSnake(0, -1);
                 printSnake();
-//                eraseTail();
-                terminal.flush();
                 System.out.println("Upp");
                 break;
             case 2: //ner
+                updateSnake(0, 1);
+                printSnake();
                 System.out.println("Ner");
                 break;
             case 3: //vänster
+                updateSnake(-1, 0);
+                printSnake();
                 System.out.println("Vänster");
                 break;
             case 4: //höger
+                updateSnake(1, 0);
+                printSnake();
                 System.out.println("höger");
                 break;
             default:
                 terminal.close();
         }
+        terminal.flush();
     }
 
     public boolean readInput(KeyStroke keyStroke) throws IOException {
