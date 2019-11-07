@@ -15,14 +15,16 @@ public class Snake {
     private Terminal terminal;
     private int level = 50; // Går att ändra svårighetsgrad om man ändra level
     boolean clash = false;
+    Arena arena;
 
 
     //växa
     //KeyInput
 
 
-    public Snake(Terminal terminal) throws Exception {
+    public Snake(Terminal terminal, Arena arena) throws Exception {
         this.terminal = terminal;
+        this.arena = arena;
         createSnake();
     }
 
@@ -55,13 +57,14 @@ public class Snake {
     }
 
     // SAMI 6
-    public void checkClash(List<Position> snakePositions) throws Exception {
-
+    public void checkClash() throws Exception {
+        int newX = snakePositions.get(0).getX();
+        int newY = snakePositions.get(0).getY();
 
         for (Position p : snakePositions) {
 
         }
-
+        clash = arena.isWall(newX, newY);
         if (clash) {
            endGame();
         }
@@ -69,7 +72,6 @@ public class Snake {
 
     public void endGame() throws Exception {
         this.direction = 0;
-        moving();
     }
 
     // END SAMI 6

@@ -35,6 +35,7 @@ public class GameLoop {
             do {
                 Thread.sleep(5);
                 snake.constantMove();
+                snake.checkClash();
                 keyStroke = terminal.pollInput();
 
             } while (keyStroke == null);
