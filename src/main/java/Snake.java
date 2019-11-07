@@ -60,32 +60,32 @@ public class Snake {
         }
     }
 
-    public void input(KeyStroke keyStroke) throws IOException {
+    public KeyStroke input(KeyStroke keyStroke) throws IOException {
 
         KeyType type = keyStroke.getKeyType();
 
         switch (type) {
             case ArrowUp:
                 direction = 1;
-                //Rörelse upp y-1
+                System.out.println("Rörelse upp y-1");
                 break;
             case ArrowDown:
                 direction = 2;
-                //Rörelse ner y+1
+                System.out.println("Rörelse ner y+1");
                 break;
             case ArrowLeft:
                 direction = 3;
-                //rörelse vänster x-1
+                System.out.println("rörelse vänster x-1");
                 break;
             case ArrowRight:
                 direction = 4;
-                //rörelse höger x+1
+                System.out.println("rörelse höger x+1");
                 break;
             case Escape:
-//                continueReadingInput = false;
                 System.out.println("quit");
                 terminal.close();
         }
+        return null;
     }
 
     private void printStuff(Position p) throws Exception {

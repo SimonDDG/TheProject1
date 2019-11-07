@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
@@ -26,11 +27,17 @@ public class GameLoop {
         snake.printSnake();
         terminal.flush();
 
-//        do {
-//
-//            snake.input();
-//
-//        } while (true);
+        do {
+
+            KeyStroke keyStroke = null;
+            do {
+                Thread.sleep(5);
+                keyStroke = terminal.pollInput();
+            } while (keyStroke == null);
+
+            keyStroke = snake.input(keyStroke);
+
+        } while (true);
 
     }
 
