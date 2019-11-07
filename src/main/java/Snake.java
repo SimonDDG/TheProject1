@@ -8,17 +8,15 @@ import java.util.List;
 
 public class Snake {
 
-    private Position pos;
     private List<Position> snakePositions = new ArrayList<>();
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 50; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 30;
+    int changeX = 0;
+    int changeY = 0;
 
-
-    //växa
-    //KeyInput
-
+    Position applePos; //temp variabel för äpplet, tas bort sen!!!
 
     public Snake(Terminal terminal) throws Exception {
         this.terminal = terminal;
@@ -31,7 +29,7 @@ public class Snake {
             Position p  = snakePositions.get(i);
 
             terminal.setCursorPosition(p.getX(), p.getY());
-            terminal.putCharacter('\u2588');
+            terminal.putCharacter('\u25a0');
         }
         eraseTail();
     }
@@ -43,7 +41,7 @@ public class Snake {
         }
     }
 
-    private void updateSnake(int changeX, int changeY){
+    private void updateSnake(){
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
@@ -59,26 +57,34 @@ public class Snake {
         counter++;
     }
 
-    public void moving() throws Exception {
+    private void moving() throws Exception {
 
         switch (direction){
             case 1: //upp
-                updateSnake(0, -1);
+                changeX = 0;
+                changeY = -1;
+                updateSnake();
                 printSnake();
                 System.out.println("Upp");
                 break;
             case 2: //ner
-                updateSnake(0, 1);
+                changeX = 0;
+                changeY = 1;
+                updateSnake();
                 printSnake();
                 System.out.println("Ner");
                 break;
             case 3: //vänster
-                updateSnake(-1, 0);
+                changeX = -1;
+                changeY = 0;
+                updateSnake();
                 printSnake();
                 System.out.println("Vänster");
                 break;
             case 4: //höger
-                updateSnake(1, 0);
+                changeX = 1;
+                changeY = 0;
+                updateSnake();
                 printSnake();
                 System.out.println("höger");
                 break;
@@ -142,6 +148,28 @@ public class Snake {
         terminal.setCursorPosition(p.getX(), p.getY());
         terminal.putCharacter(' ');
 
+    }
+
+    public void grow() throws Exception { //hämtar appels position objekt. "Position applePos"
+        if (snakePositions.get(0).getX() == applePos.getX() && snakePositions.get(0).getY() == applePos.getY()){
+
+            int antalSvans = 10; //för att testa att koden funkar, så ökar den med 10 svansar
+
+            for (int i = 0; i < antalSvans; i++) {
+                Position gamlaHuvudet = snakePositions.get(0);
+                Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
+                snakePositions.add(0, nyaHuvudet);
+            }
+        }
+
+    }
+
+    //tillfällig metod för att skapa ett tillfälligt äpple.
+    public Position tempApple() throws Exception {
+        applePos = new Position(40,15);
+        terminal.setCursorPosition(applePos.getX(), applePos.getY());
+        terminal.putCharacter('\uF8FF');
+        return applePos;
     }
 
 }
