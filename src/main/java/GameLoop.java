@@ -28,6 +28,7 @@ public class GameLoop {
 
         arena.printWall();
         snake.printSnake();
+        apple.putApple();
         terminal.flush();
 
         do {
