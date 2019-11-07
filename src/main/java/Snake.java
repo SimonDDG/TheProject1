@@ -9,10 +9,12 @@ import java.util.List;
 public class Snake {
 
     private Position pos;
-    private List<Position> posses = new ArrayList<>();
-    private int move;
+    private List<Position> snakePositions = new ArrayList<>();
+    private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
+    private int level = 200; // Går att ändra svårighetsgrad om man ändra level
+
 
     //växa
     //KeyInput
@@ -24,30 +26,37 @@ public class Snake {
 
     public void printSnake() throws Exception {
         createSnake();
-        for (int i = 0; i < posses.size(); i++) {
-            printStuff(posses.get(i));
+        for (int i = 0; i < snakePositions.size(); i++) {
+            printStuff(snakePositions.get(i));
+
         }
     }
 
     private void createSnake(){
         int originLength = 3;
         for (int i = 0; i < originLength; i++) {
-            posses.add(new Position(20, 10 + i));
+            snakePositions.add(new Position(20, 10 + i));
         }
     }
 
+    private void updateSnake(){
+        snakePositions.get(0);
+    }
+
     public void constantMove() throws IOException {
-        if (move == 50) {
+
+        if (counter == level) {
             moving();
-            move = 0;
+            counter = 0;
         }
-        move++;
+        counter++;
     }
 
     public void moving() throws IOException {
 
         switch (direction){
             case 1: //upp
+                // y--, y-variabeln skall minskas
                 System.out.println("Upp");
                 break;
             case 2: //ner
