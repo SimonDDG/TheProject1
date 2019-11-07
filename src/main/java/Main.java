@@ -14,11 +14,11 @@ public class Main {
 
         terminal.setCursorVisible(false);
 
+        StartStop startStop = new StartStop(terminal);
         Apple apple = new Apple(terminal);
         Arena arena = new Arena(terminal);
-        Snake snake = new Snake(terminal, arena, apple);
+        Snake snake = new Snake(terminal, arena, apple, startStop);
         GameLoop gameLoop = new GameLoop(terminal, apple, arena, snake);
-        StartStop startStop = new StartStop(terminal);
 
         startStop.start();
         gameLoop.runGame();

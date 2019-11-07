@@ -12,6 +12,7 @@ public class GameLoop {
     Snake snake;
     int randomX;
     int randomY;
+    boolean running = true;
 
 
     public GameLoop(Terminal terminal, Apple apple, Arena arena, Snake snake) {
@@ -23,12 +24,9 @@ public class GameLoop {
 
     public void runGame() throws Exception {
 
-        boolean running = true;
-
         arena.printWall();
         snake.printSnake();
         apple.putApple();
-//        snake.tempApple(); //temp lösning så att det ploppar upp ett äpple, tas bort.
         terminal.flush();
 
         do {
@@ -41,13 +39,15 @@ public class GameLoop {
                 snake.grow();
                 keyStroke = terminal.pollInput();
 
+                running = snake.continuePlay();
             } while (keyStroke == null);
 
-            running = snake.readInput(keyStroke);
+            snake.readInput(keyStroke);
 
         } while (running);
 
     }
+
 
     // KeyInput
 

@@ -18,13 +18,16 @@ public class Snake {
     int changeX = 0;
     int changeY = 0;
     private Apple apple;
+    private boolean endGame = false;
+    private StartStop startStop;
 
     Position applePos; //temp variabel för äpplet, tas bort sen!!!
 
-    public Snake(Terminal terminal, Arena arena, Apple apple) throws Exception {
+    public Snake(Terminal terminal, Arena arena, Apple apple, StartStop startStop) throws Exception {
         this.terminal = terminal;
         this.arena = arena;
         this.apple = apple;
+        this.startStop = startStop;
         createSnake();
     }
 
@@ -113,12 +116,12 @@ public class Snake {
                 printSnake();
                 break;
             default:
-                terminal.close();
+                endGame = true;
         }
         terminal.flush();
     }
 
-    public boolean readInput(KeyStroke keyStroke) throws IOException {
+    public void readInput(KeyStroke keyStroke) throws IOException {
 
         KeyType type = keyStroke.getKeyType();
 
@@ -160,11 +163,8 @@ public class Snake {
                     break;
                 }
             case Escape:
-                System.out.println("----> QUIT <----");
-                terminal.close();
-                return false;
+                endGame = true;
         }
-        return true;
     }
 
     private void eraseTail() throws Exception {
@@ -187,7 +187,19 @@ public class Snake {
                 snakePositions.add(0, nyaHuvudet);
             }
         }
+    }
 
+    public boolean continuePlay() throws Exception {
+        if (endGame) {
+
+            System.out.println("----> QUIT <----");
+            startStop.printStopScreen();
+            Thread.sleep(3000);
+            terminal.close();
+            return false;
+
+        }
+        return true;
     }
 
     //tillfällig metod för att skapa ett tillfälligt äpple.

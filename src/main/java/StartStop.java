@@ -36,4 +36,16 @@ public class StartStop {
             terminal.flush();
             terminal.resetColorAndSGR();
     }
+
+    public void printStopScreen() throws Exception {
+        terminal.clearScreen();
+        terminal.setCursorPosition(25, 12);
+        terminal.setBackgroundColor(TextColor.ANSI.GREEN);
+        terminal.setForegroundColor(TextColor.ANSI.MAGENTA);
+        String gameOver = "GAME OVER";
+        for (int i = 0; i < gameOver.length(); i++) {
+            terminal.putCharacter(gameOver.charAt(i));
+        }
+        terminal.flush();
+    }
 }
