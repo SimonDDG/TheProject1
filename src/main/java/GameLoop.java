@@ -23,6 +23,8 @@ public class GameLoop {
 
     public void runGame() throws Exception {
 
+        int counter = 0;
+
         arena.printWall();
         snake.printSnake();
         terminal.flush();
@@ -32,10 +34,17 @@ public class GameLoop {
             KeyStroke keyStroke = null;
             do {
                 Thread.sleep(5);
+
+                if (counter == 200) {
+                    snake.moving();
+                    counter = 0;
+                }
+                counter++;
+
                 keyStroke = terminal.pollInput();
             } while (keyStroke == null);
 
-            keyStroke = snake.input(keyStroke);
+            snake.readInput(keyStroke);
 
         } while (true);
 

@@ -48,44 +48,67 @@ public class Snake {
 
         switch (direction){
             case 1: //upp
+                System.out.println("Upp");
                 break;
             case 2: //ner
+                System.out.println("Ner");
                 break;
             case 3: //vänster
+                System.out.println("Vänster");
                 break;
             case 4: //höger
+                System.out.println("höger");
                 break;
             default:
                 terminal.close();
         }
     }
 
-    public KeyStroke input(KeyStroke keyStroke) throws IOException {
+    public void readInput(KeyStroke keyStroke) throws IOException {
 
         KeyType type = keyStroke.getKeyType();
 
         switch (type) {
             case ArrowUp:
-                direction = 1;
-                System.out.println("Rörelse upp y-1");
-                break;
+                if (direction == 2) {
+                    System.out.println("Byter inte till upp");
+                    break;
+                } else {
+                    direction = 1;
+                    System.out.println("Rörelse upp y-1");
+                    break;
+                }
             case ArrowDown:
-                direction = 2;
-                System.out.println("Rörelse ner y+1");
-                break;
+                if (direction == 1) {
+                    System.out.println("Byter inte till ner");
+                    break;
+                } else {
+                    direction = 2;
+                    System.out.println("Rörelse ner y+1");
+                    break;
+                }
             case ArrowLeft:
-                direction = 3;
-                System.out.println("rörelse vänster x-1");
-                break;
+                if (direction == 4) {
+                    System.out.println("Byter inte till vänster");
+                    break;
+                } else {
+                    direction = 3;
+                    System.out.println("rörelse vänster x-1");
+                    break;
+                }
             case ArrowRight:
-                direction = 4;
-                System.out.println("rörelse höger x+1");
-                break;
+                if (direction == 3) {
+                    System.out.println("Byter inte till höger");
+                    break;
+                } else {
+                    direction = 4;
+                    System.out.println("rörelse höger x+1");
+                    break;
+                }
             case Escape:
                 System.out.println("quit");
                 terminal.close();
         }
-        return null;
     }
 
     private void printStuff(Position p) throws Exception {
