@@ -49,14 +49,28 @@ public class Snake {
         }
     }
 
-    private void updateSnake(){
+    private void updateSnake() throws Exception {
 
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
 
+        checkClash();
+        checkSnakeBody();
         // Call check snake clash method, if snake eats itself = game over
+    }
+
+    public void checkSnakeBody () throws Exception {
+        int newX = snakePositions.get(0).getX();
+        int newY = snakePositions.get(0).getY();
+
+        for (int i = 1; i < snakePositions.size(); i++){
+            if (newX == snakePositions.get(i).getX() && newY == snakePositions.get(i).getY()) {
+                endGame();
+            }
+        }
+
     }
 
     // SAMI 6
@@ -64,9 +78,6 @@ public class Snake {
         int newX = snakePositions.get(0).getX();
         int newY = snakePositions.get(0).getY();
 
-        for (Position p : snakePositions) {
-
-        }
         clash = arena.isWall(newX, newY);
         if (clash) {
            endGame();

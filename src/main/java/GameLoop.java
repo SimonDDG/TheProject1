@@ -35,7 +35,7 @@ public class GameLoop {
             do {
                 Thread.sleep(5);
                 snake.constantMove();
-                snake.checkClash();
+//                snake.checkClash(); Flyttat till snake update metoden
                 snake.grow();
                 keyStroke = terminal.pollInput();
 
