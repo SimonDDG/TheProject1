@@ -7,11 +7,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Main {
-
     public static void main(String[] args) throws Exception {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Terminal terminal = terminalFactory.createTerminal();
-
         terminal.setCursorVisible(false);
 
         StartStop startStop = new StartStop(terminal);
@@ -23,7 +21,6 @@ public class Main {
         startStop.start();
         gameLoop.runGame();
 
-        //if
         terminal.clearScreen();
         terminal.setCursorPosition(25, 12);
         terminal.setBackgroundColor(TextColor.ANSI.GREEN);
@@ -34,6 +31,5 @@ public class Main {
         }
         terminal.flush();
     }
-
 }
 

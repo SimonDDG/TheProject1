@@ -29,7 +29,7 @@ public class StartStop {
         terminal.setCursorPosition(25, 10);
         terminal.setBackgroundColor(TextColor.ANSI.BLACK);
         terminal.setForegroundColor(TextColor.ANSI.GREEN);
-        String startGame = "ARE YOU READY TO PLAY SNAKE?\n\n \t\t\t\t\t\tPRESS ENTER TO START THE GAME";
+        String startGame = "ARE YOU READY TO PLAY SNAKE3000?\n\n \t\t\t\t\t\tPRESS ANY KEY TO START THE GAME";
         for (int i = 0; i < startGame.length(); i++) {
             terminal.putCharacter(startGame.charAt(i));
         }
@@ -42,7 +42,7 @@ public class StartStop {
         terminal.setCursorPosition(25, 12);
         terminal.setBackgroundColor(TextColor.ANSI.GREEN);
         terminal.setForegroundColor(TextColor.ANSI.MAGENTA);
-        String gameOver = "GAME OVER";
+        String gameOver = "GAME OVER, BUT HEY, IT'S FRIDAY BABY!";
         for (int i = 0; i < gameOver.length(); i++) {
             terminal.putCharacter(gameOver.charAt(i));
         }
