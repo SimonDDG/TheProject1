@@ -6,7 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Apple {
 
     Terminal terminal;
-    Snake snake;
     final char apple = 'o';
     int appleX;
     int appleY;
@@ -25,11 +24,16 @@ public class Apple {
 
     public void putApple() throws IOException {
         System.out.println("SKRIVER ÄPPLE");
-        int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
-        int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
 
         boolean isSnake = true;
+
         do {
+            System.out.println("NYTT RANDOM NUMMER");
+//            int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
+//            int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
+
+            int randomNumberX = ThreadLocalRandom.current().nextInt(25, 30);
+            int randomNumberY = ThreadLocalRandom.current().nextInt(15, 20);
             appleX = randomNumberX;
             appleY = randomNumberY;
 
@@ -38,10 +42,12 @@ public class Apple {
                     isSnake = false;
                 }
             }
+
         } while (isSnake);
 
         applePosition.setX(appleX);
         applePosition.setY(appleY);
+
         terminal.setCursorPosition(appleX, appleY);
         terminal.putCharacter(apple);
     }

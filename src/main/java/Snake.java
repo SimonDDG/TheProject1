@@ -4,7 +4,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Snake {
 
@@ -133,38 +132,30 @@ public class Snake {
         switch (type) {
             case ArrowUp:
                 if (direction == 2) {
-                    System.out.println("Byter inte till upp");
                     break;
                 } else {
                     direction = 1;
-                    System.out.println("Rörelse upp y-1");
                     break;
                 }
             case ArrowDown:
                 if (direction == 1) {
-                    System.out.println("Byter inte till ner");
                     break;
                 } else {
                     direction = 2;
-                    System.out.println("Rörelse ner y+1");
                     break;
                 }
             case ArrowLeft:
                 if (direction == 4) {
-                    System.out.println("Byter inte till vänster");
                     break;
                 } else {
                     direction = 3;
-                    System.out.println("rörelse vänster x-1");
                     break;
                 }
             case ArrowRight:
                 if (direction == 3) {
-                    System.out.println("Byter inte till höger");
                     break;
                 } else {
                     direction = 4;
-                    System.out.println("rörelse höger x+1");
                     break;
                 }
             case Escape:
