@@ -66,7 +66,7 @@ public class Snake {
         int newX = snakePositions.get(0).getX();
         int newY = snakePositions.get(0).getY();
 
-        for (int i = 1; i < snakePositions.size(); i++){
+        for (int i = 1; i < snakePositions.size()-1; i++){
             if (newX == snakePositions.get(i).getX() && newY == snakePositions.get(i).getY()) {
                 endGame();
             }
@@ -75,7 +75,7 @@ public class Snake {
     }
 
     // SAMI 6
-    public void checkClash() throws Exception {
+    public void checkWall() throws Exception {
         int newX = snakePositions.get(0).getX();
         int newY = snakePositions.get(0).getY();
 
@@ -102,7 +102,7 @@ public class Snake {
 
     private void moving() throws Exception {
 
-        checkClash();
+        checkWall();
         checkSnakeBody();
 
         switch (direction){

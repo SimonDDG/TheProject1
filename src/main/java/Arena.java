@@ -7,10 +7,10 @@ public class Arena {
 
     Terminal terminal;
 
-    public ArrayList<Position> wall1 = new ArrayList<>();
-    public ArrayList<Position> wall2 = new ArrayList<>();
-    public ArrayList<Position> wall3 = new ArrayList<>();
-    public ArrayList<Position> wall4 = new ArrayList<>();
+    public ArrayList<Position> leftWall = new ArrayList<>();
+    public ArrayList<Position> topWall = new ArrayList<>();
+    public ArrayList<Position> rightWall = new ArrayList<>();
+    public ArrayList<Position> bottomWall = new ArrayList<>();
 
     public Arena(Terminal terminal) {
         this.terminal = terminal;
@@ -19,19 +19,19 @@ public class Arena {
     public void createWall() {
         int wall1Lenght = 26;
         for (int i = 0; i < wall1Lenght; i++) {
-            wall1.add(new Position(0, 1+i));
+            leftWall.add(new Position(0, 1+i));
         }
         int wall2Lenght = 80;
         for (int i = 0; i < wall2Lenght; i++) {
-            wall2.add(new Position( 0+i, 1));
+            topWall.add(new Position( 0+i, 1));
         }
         int wall3Lenght = 26;
         for (int i = 0; i < wall3Lenght; i++) {
-            wall3.add(new Position(80, 1+i));
+            rightWall.add(new Position(80, 1+i));
         }
         int wall4Lenght = 80;
         for (int i = 0; i < wall4Lenght; i++) {
-            wall4.add(new Position(0+i, 80));
+            bottomWall.add(new Position(0+i, 80));
         }
     }
 
@@ -40,26 +40,26 @@ public class Arena {
         createWall();
 
         //Vänstra väggen = wall1
-        for (int i = 0; i < wall1.size(); i++) {
-            terminal.setCursorPosition(wall1.get(i).getX(), wall1.get(i).getY());
+        for (int i = 0; i < leftWall.size(); i++) {
+            terminal.setCursorPosition(leftWall.get(i).getX(), leftWall.get(i).getY());
             terminal.putCharacter('\u2588');
         }
 
         //Övre väggen = wall2
-        for (int i = 0; i < wall2.size(); i++) {
-            terminal.setCursorPosition(wall2.get(i).getX(), wall2.get(i).getY());
+        for (int i = 0; i < topWall.size(); i++) {
+            terminal.setCursorPosition(topWall.get(i).getX(), topWall.get(i).getY());
             terminal.putCharacter('\u2588');
         }
 
         //Högra väggen = wall3
-        for (int i = 0; i < wall3.size(); i++) {
-            terminal.setCursorPosition(wall3.get(i).getX(), wall3.get(i).getY());
+        for (int i = 0; i < rightWall.size(); i++) {
+            terminal.setCursorPosition(rightWall.get(i).getX(), rightWall.get(i).getY());
             terminal.putCharacter('\u2588');
         }
 
         //Nedre väggen = wall4
-        for (int i = 0; i < wall4.size(); i++) {
-            terminal.setCursorPosition(wall4.get(i).getX(), wall4.get(i).getY());
+        for (int i = 0; i < bottomWall.size(); i++) {
+            terminal.setCursorPosition(bottomWall.get(i).getX(), bottomWall.get(i).getY());
             terminal.putCharacter('\u2588');
         }
 
@@ -67,24 +67,24 @@ public class Arena {
 
     public boolean isWall(int x, int y) {
 
-        for (int i = 0; i < wall1.size(); i++) {
-            if (wall1.get(i).getX() == x && wall1.get(i).getY() == y) {
+        for (int i = 0; i < leftWall.size(); i++) {
+            if (leftWall.get(i).getX() == x && leftWall.get(i).getY() == y) {
                 return true;
             }
         }
 
-        for (int i = 0; i < wall2.size(); i++) {
-            if (wall2.get(i).getX() == x && wall2.get(i).getY() == y) {
+        for (int i = 0; i < topWall.size(); i++) {
+            if (topWall.get(i).getX() == x && topWall.get(i).getY() == y) {
                 return true;
             }
         }
-        for (int i = 0; i < wall3.size(); i++) {
-            if (wall3.get(i).getX() == x && wall3.get(i).getY()-1 == y) {
+        for (int i = 0; i < rightWall.size(); i++) {
+            if (rightWall.get(i).getX() == x && rightWall.get(i).getY() == y) {
                 return true;
             }
         }
-        for (int i = 0; i < wall4.size(); i++) {
-            if (wall4.get(i).getX() == x && wall4.get(i).getY() == y) {
+        for (int i = 0; i < bottomWall.size(); i++) {
+            if (bottomWall.get(i).getX() == x && bottomWall.get(i).getY() == y) {
                 return true;
             }
         }
