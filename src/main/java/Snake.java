@@ -194,12 +194,12 @@ public class Snake {
         if (snakePositions.get(0).getX() == applePos.getX() && snakePositions.get(0).getY() == applePos.getY()){
             apple.putApple();
             terminal.flush();
-            int antalSvans = 3; //för att testa att koden funkar, så ökar den med 10 svansar
+            int antalSvans = 7; //för att testa att koden funkar, så ökar den med 10 svansar
 
             for (int i = 0; i < antalSvans; i++) {
-                Position gamlaHuvudet = snakePositions.get(0);
-                Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
-                snakePositions.add(0, nyaHuvudet);
+                Position gamlaSvansen = snakePositions.get(snakePositions.size()-2);
+                Position nyaSvansen = new Position(gamlaSvansen.getX() - changeX, gamlaSvansen.getY() - changeY);
+                snakePositions.add(snakePositions.size()-2, nyaSvansen);
             }
         }
     }
