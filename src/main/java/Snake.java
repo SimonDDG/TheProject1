@@ -71,7 +71,6 @@ public class Snake {
                 endGame();
             }
         }
-
     }
 
     // SAMI 6
