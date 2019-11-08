@@ -22,7 +22,8 @@ public class GameLoop {
     }
 
     public void runGame() throws Exception {
-
+        MP3Player m = new MP3Player();
+        m.play("Happy.mp3");
         arena.printWall();
         snake.printSnake();
         apple.putAppleAndScore();
@@ -43,6 +44,9 @@ public class GameLoop {
 
             snake.readInput(keyStroke);
 
+            if (!running) {
+                m.stop("Happy.mp3");
+            }
         } while (running);
 
     }
@@ -73,22 +77,22 @@ public class GameLoop {
 //            if (randomNewAppleKrockarInteMedSnake) {
 //                break;
 //            }
-            }
         }
+    }
 
-        // Creating a position with acceptable randomised x,y
-        Position positionApple = new Position(randomX, randomY);
+    // Creating a position with acceptable randomised x,y
+    Position positionApple = new Position(randomX, randomY);
 //        return positionApple;
-    } // END createApplePosition()
+} // END createApplePosition()
 
 
-    // Keep score AND Remove old apple (to be called from snake growing method)
+// Keep score AND Remove old apple (to be called from snake growing method)
 
 
-    // Check if snake eats itself = game over SAMI
+// Check if snake eats itself = game over SAMI
 
 
-    // Check if snake hits wall = game over SAMI
+// Check if snake hits wall = game over SAMI
 
 
 

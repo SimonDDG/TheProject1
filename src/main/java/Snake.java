@@ -11,8 +11,8 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 12; // Går att ändra svårighetsgrad om man ändra level
-    private int growLevel = 1;
+    private int level = 15; // Går att ändra svårighetsgrad om man ändra level
+    private int growLevel = 3;
     boolean clash = false;
     Arena arena;
     int changeX = 0;
@@ -187,10 +187,13 @@ public class Snake {
     public boolean continuePlay() throws Exception {
 
         if (endGame) {
+            MP3Player m = new MP3Player();
+            m.play("Titanic.mp3");
             System.out.println("----> QUIT <----");
             startStop.printStopScreen();
-            Thread.sleep(3000);
+            Thread.sleep(10000);
             terminal.close();
+            m.stop("Titanic.mp3");
             return false;
         }
         return true;

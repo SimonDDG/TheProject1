@@ -23,18 +23,16 @@ public class Apple {
         this.terminal = terminal;
     }
 
-    public void putAppleAndScore() throws IOException {
+    public void putAppleAndScore() throws IOException, InterruptedException {
         System.out.println("SKRIVER ÄPPLE");
 
         boolean isSnake = true;
 
         do {
             System.out.println("NYTT RANDOM NUMMER");
-//            int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
-//            int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
+            int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
+            int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
 
-            int randomNumberX = ThreadLocalRandom.current().nextInt(25, 30);
-            int randomNumberY = ThreadLocalRandom.current().nextInt(15, 20);
             appleX = randomNumberX;
             appleY = randomNumberY;
 
