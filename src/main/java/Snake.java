@@ -13,15 +13,14 @@ public class Snake {
     private int direction = 1;
     private Terminal terminal;
     private int level = 20; // Går att ändra svårighetsgrad om man ändra level
-    boolean clash = false;
-    Arena arena;
-    int changeX = 0;
-    int changeY = 0;
+    private boolean clash = false;
+    private Arena arena;
+    private int changeX = 0;
+    private int changeY = 0;
     private Apple apple;
     private boolean endGame = false;
     private StartStop startStop;
-
-    Position applePos; //temp variabel för äpplet, tas bort sen!!!
+    private Position applePos;
 
     public Snake(Terminal terminal, Arena arena, Apple apple, StartStop startStop) throws Exception {
         this.terminal = terminal;
@@ -32,10 +31,9 @@ public class Snake {
     }
 
     public void printSnake() throws Exception {
+
         for (int i = 0; i < snakePositions.size(); i++) {
-
             Position p  = snakePositions.get(i);
-
             terminal.setCursorPosition(p.getX(), p.getY());
             terminal.putCharacter('\u25a0');
         }
@@ -44,22 +42,17 @@ public class Snake {
 
     private void createSnake() throws Exception {
         int originLength = 10;
+
         for (int i = 0; i < originLength; i++) {
             snakePositions.add(new Position(20, 10 + i));
         }
     }
 
     private void updateSnake() throws Exception {
-
-//        checkClash();
-//        checkSnakeBody();
-
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
-
-        // Call check snake clash method, if snake eats itself = game over
     }
 
     public void checkSnakeBody () throws Exception {
@@ -74,7 +67,6 @@ public class Snake {
 
     }
 
-    // SAMI 6
     public void checkWall() throws Exception {
         int newX = snakePositions.get(0).getX();
         int newY = snakePositions.get(0).getY();
@@ -88,8 +80,6 @@ public class Snake {
     public void endGame() throws Exception {
         this.direction = 0;
     }
-
-    // END SAMI 6
 
     public void constantMove() throws Exception {
 
@@ -186,15 +176,14 @@ public class Snake {
         Position p = snakePositions.get(snakePositions.size()-1);
         terminal.setCursorPosition(p.getX(), p.getY());
         terminal.putCharacter(' ');
-
     }
 
-    public void grow() throws Exception { //hämtar appels position objekt. "Position applePos"
+    public void grow() throws Exception {
         applePos = apple.getApplePosition();
         if (snakePositions.get(0).getX() == applePos.getX() && snakePositions.get(0).getY() == applePos.getY()){
             apple.putApple();
             terminal.flush();
-            int antalSvans = 7; //för att testa att koden funkar, så ökar den med 10 svansar
+            int antalSvans = 5;
 
             for (int i = 0; i < antalSvans; i++) {
                 Position gamlaSvansen = snakePositions.get(snakePositions.size()-2);
@@ -205,24 +194,15 @@ public class Snake {
     }
 
     public boolean continuePlay() throws Exception {
-        if (endGame) {
 
+        if (endGame) {
             System.out.println("----> QUIT <----");
             startStop.printStopScreen();
             Thread.sleep(3000);
             terminal.close();
             return false;
-
         }
         return true;
     }
-
-    //tillfällig metod för att skapa ett tillfälligt äpple.
-//    public Position tempApple() throws Exception {
-//        applePos = new Position(40,15);
-//        terminal.setCursorPosition(applePos.getX(), applePos.getY());
-//        terminal.putCharacter('\uF8FF');
-//        return applePos;
-//    }
 
 }
