@@ -11,11 +11,12 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 20; // Går att ändra svårighetsgrad om man ändra level
-    private boolean clash = false;
-    private Arena arena;
-    private int changeX = 0;
-    private int changeY = 0;
+    private int level = 12; // Går att ändra svårighetsgrad om man ändra level
+    private int growLevel = 1;
+    boolean clash = false;
+    Arena arena;
+    int changeX = 0;
+    int changeY = 0;
     private Apple apple;
     private boolean endGame = false;
     private StartStop startStop;
@@ -171,9 +172,9 @@ public class Snake {
     public void grow() throws Exception {
         applePos = apple.getApplePosition();
         if (snakePositions.get(0).getX() == applePos.getX() && snakePositions.get(0).getY() == applePos.getY()){
-            apple.putApple();
+            apple.putAppleAndScore();
             terminal.flush();
-            int antalSvans = 5;
+            int antalSvans = growLevel; //för att testa att koden funkar, så ökar den med 10 svansar
 
             for (int i = 0; i < antalSvans; i++) {
                 Position gamlaSvansen = snakePositions.get(snakePositions.size()-2);

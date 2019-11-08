@@ -9,6 +9,7 @@ public class Apple {
     final char apple = 'o';
     int appleX;
     int appleY;
+    int keepScore = 0;
 
     Position applePosition = new Position(appleX, appleY);
     //test
@@ -22,7 +23,7 @@ public class Apple {
         this.terminal = terminal;
     }
 
-    public void putApple() throws IOException {
+    public void putAppleAndScore() throws IOException {
         System.out.println("SKRIVER ÄPPLE");
 
         boolean isSnake = true;
@@ -50,6 +51,38 @@ public class Apple {
 
         terminal.setCursorPosition(appleX, appleY);
         terminal.putCharacter(apple);
+
+        String score = "Score: ";
+        for (int i = 0; i < score.length(); i++) {
+            terminal.setCursorPosition(0+i,0);
+            terminal.putCharacter(score.charAt(i));
+        }
+
+        String keepScoreString = Integer.toString(keepScore);
+        if (keepScore < 10) {
+        for (int i = 0; i < keepScoreString.length(); i++) {
+            terminal.setCursorPosition(7, 0);
+            terminal.putCharacter(keepScoreString.charAt(i));
+        }
+
+        }
+        if (keepScore >= 10) {
+            keepScoreString = "1";
+            terminal.setCursorPosition(7, 0);
+            terminal.putCharacter(keepScoreString.charAt(0));
+            terminal.setCursorPosition(8,0);
+            terminal.putCharacter(Integer.toString(keepScore).charAt(1));
+        }
+        if (keepScore >= 20) {
+            keepScoreString = "2";
+            terminal.setCursorPosition(7, 0);
+            terminal.putCharacter(keepScoreString.charAt(0));
+            terminal.setCursorPosition(8,0);
+            terminal.putCharacter(Integer.toString(keepScore).charAt(1));
+
+        }
+
+        keepScore++;
     }
 
     public Position getApplePosition() {

@@ -1,7 +1,6 @@
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class GameLoop {
@@ -26,7 +25,7 @@ public class GameLoop {
 
         arena.printWall();
         snake.printSnake();
-        apple.putApple();
+        apple.putAppleAndScore();
         terminal.flush();
 
         do {
