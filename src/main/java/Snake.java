@@ -63,7 +63,6 @@ public class Snake {
                 endGame();
             }
         }
-
     }
 
     public void checkWall() throws Exception {

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Arena {
 
     Terminal terminal;
+    private int wallLengthBottomAndTop = 80;
+    private int wallLengthLeftAndRight = 23;
 
     public ArrayList<Position> leftWall = new ArrayList<>();
     public ArrayList<Position> topWall = new ArrayList<>();
@@ -17,21 +19,17 @@ public class Arena {
     }
 
     public void createWall() {
-        int wall1Lenght = 26;
-        for (int i = 0; i < wall1Lenght; i++) {
+        for (int i = 0; i < wallLengthLeftAndRight; i++) {
             leftWall.add(new Position(0, 1+i));
         }
-        int wall2Lenght = 80;
-        for (int i = 0; i < wall2Lenght; i++) {
-            topWall.add(new Position( 0+i, 1));
+        for (int i = 0; i < wallLengthLeftAndRight; i++) {
+            rightWall.add(new Position(wallLengthBottomAndTop, 1+i));
         }
-        int wall3Lenght = 26;
-        for (int i = 0; i < wall3Lenght; i++) {
-            rightWall.add(new Position(80, 1+i));
+        for (int i = 0; i < wallLengthBottomAndTop; i++) {
+            topWall.add(new Position(i, 1));
         }
-        int wall4Lenght = 80;
-        for (int i = 0; i < wall4Lenght; i++) {
-            bottomWall.add(new Position(0+i, 80));
+        for (int i = 0; i < wallLengthBottomAndTop; i++) {
+            bottomWall.add(new Position(i, wallLengthLeftAndRight)); // y=23 FIXED METHOD
         }
     }
 
