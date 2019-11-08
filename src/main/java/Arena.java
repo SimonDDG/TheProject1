@@ -60,22 +60,22 @@ public class Arena {
 
     public boolean isWall(int x, int y) {
 
-        for (int i = 0; i < wall1.size(); i++) {
+        for (int i = 1; i < wall1.size()-1; i++) {
             if (wall1.get(i).getX() == x && wall1.get(i).getY() == y) {
                 return true;
             }
         }
-        for (int i = 0; i < wall2.size(); i++) {
+        for (int i = 1; i < wall2.size()-1; i++) {
             if (wall2.get(i).getX() == x && wall2.get(i).getY() == y) {
                 return true;
             }
         }
-        for (int i = 0; i < wall3.size(); i++) {
+        for (int i = 1; i < wall3.size()-1; i++) {
             if (wall3.get(i).getX() == x && wall3.get(i).getY() == y) {
                 return true;
             }
         }
-        for (int i = 0; i < wall4.size(); i++) {
+        for (int i = 1; i < wall4.size()-1; i++) {
             if (wall4.get(i).getX() == x && wall4.get(i).getY() == y) {
                 return true;
             }

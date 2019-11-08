@@ -25,14 +25,14 @@ public class Apple {
 
     public void putApple() throws IOException {
         System.out.println("SKRIVER ÄPPLE");
-        int randomNumberX = ThreadLocalRandom.current().nextInt(1, 79);
-        int randomNumberY = ThreadLocalRandom.current().nextInt(1, 24);
+        int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
+        int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
         appleX = randomNumberX;
         appleY = randomNumberY;
         applePosition.setX(appleX);
         applePosition.setY(appleY);
-            terminal.setCursorPosition(appleX, appleY);
-            terminal.putCharacter(apple);
+        terminal.setCursorPosition(appleX, appleY);
+        terminal.putCharacter(apple);
     }
 
     public Position getApplePosition() {
