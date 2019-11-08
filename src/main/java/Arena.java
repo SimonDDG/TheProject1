@@ -39,18 +39,25 @@ public class Arena {
 
         createWall();
 
+        //Vänstra väggen = wall1
         for (int i = 0; i < wall1.size(); i++) {
             terminal.setCursorPosition(wall1.get(i).getX(), wall1.get(i).getY());
             terminal.putCharacter('\u2588');
         }
+
+        //Övre väggen = wall2
         for (int i = 0; i < wall2.size(); i++) {
             terminal.setCursorPosition(wall2.get(i).getX(), wall2.get(i).getY());
             terminal.putCharacter('\u2588');
         }
+
+        //Högra väggen = wall3
         for (int i = 0; i < wall3.size(); i++) {
             terminal.setCursorPosition(wall3.get(i).getX(), wall3.get(i).getY());
             terminal.putCharacter('\u2588');
         }
+
+        //Nedre väggen = wall4
         for (int i = 0; i < wall4.size(); i++) {
             terminal.setCursorPosition(wall4.get(i).getX(), wall4.get(i).getY());
             terminal.putCharacter('\u2588');
@@ -65,13 +72,14 @@ public class Arena {
                 return true;
             }
         }
+
         for (int i = 0; i < wall2.size(); i++) {
             if (wall2.get(i).getX() == x && wall2.get(i).getY() == y) {
                 return true;
             }
         }
         for (int i = 0; i < wall3.size(); i++) {
-            if (wall3.get(i).getX() == x && wall3.get(i).getY() == y) {
+            if (wall3.get(i).getX() == x && wall3.get(i).getY()-1 == y) {
                 return true;
             }
         }
@@ -80,6 +88,7 @@ public class Arena {
                 return true;
             }
         }
+
         return false;
     }
 }

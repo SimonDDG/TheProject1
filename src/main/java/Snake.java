@@ -12,7 +12,7 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 15; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 20; // Går att ändra svårighetsgrad om man ändra level
     boolean clash = false;
     Arena arena;
     int changeX = 0;
@@ -51,13 +51,14 @@ public class Snake {
 
     private void updateSnake() throws Exception {
 
+//        checkClash();
+//        checkSnakeBody();
+
         Position gamlaHuvudet = snakePositions.get(0);
         Position nyaHuvudet = new Position(gamlaHuvudet.getX() + changeX, gamlaHuvudet.getY() + changeY);
         snakePositions.add(0, nyaHuvudet);
         snakePositions.remove(snakePositions.size() - 1);
 
-        checkClash();
-        checkSnakeBody();
         // Call check snake clash method, if snake eats itself = game over
     }
 
@@ -100,6 +101,9 @@ public class Snake {
     }
 
     private void moving() throws Exception {
+
+        checkClash();
+        checkSnakeBody();
 
         switch (direction){
             case 1: //upp
