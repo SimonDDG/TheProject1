@@ -27,8 +27,19 @@ public class Apple {
         System.out.println("SKRIVER ÄPPLE");
         int randomNumberX = ThreadLocalRandom.current().nextInt(2, 78);
         int randomNumberY = ThreadLocalRandom.current().nextInt(2, 23);
-        appleX = randomNumberX;
-        appleY = randomNumberY;
+
+        boolean isSnake = true;
+        do {
+            appleX = randomNumberX;
+            appleY = randomNumberY;
+
+            for (int i = 0; i < Snake.getPos().size(); i++) {
+                if (appleX != Snake.getPos().get(i).getX() && appleY != Snake.getPos().get(i).getY()) {
+                    isSnake = false;
+                }
+            }
+        } while (isSnake);
+
         applePosition.setX(appleX);
         applePosition.setY(appleY);
         terminal.setCursorPosition(appleX, appleY);

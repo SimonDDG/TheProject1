@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Snake {
 
-    private List<Position> snakePositions = new ArrayList<>();
+    private static ArrayList<Position> snakePositions = new ArrayList<>();
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
@@ -203,6 +203,10 @@ public class Snake {
             return false;
         }
         return true;
+    }
+
+    static ArrayList<Position> getPos(){
+        return snakePositions;
     }
 
 }
