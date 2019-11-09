@@ -6,7 +6,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
+
 public class Main {
+
     public static void main(String[] args) throws Exception {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Terminal terminal = terminalFactory.createTerminal();

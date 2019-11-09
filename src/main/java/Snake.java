@@ -11,7 +11,7 @@ public class Snake {
     private int counter = 0;
     private int direction = 1;
     private Terminal terminal;
-    private int level = 15; // Går att ändra svårighetsgrad om man ändra level
+    private int level = 25; // Går att ändra svårighetsgrad om man ändra level
     private int growLevel = 3;
     boolean clash = false;
     Arena arena;

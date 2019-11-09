@@ -2,7 +2,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 
 public class StartStop {
 
@@ -38,11 +39,14 @@ public class StartStop {
     }
 
     public void printStopScreen() throws Exception {
+        LocalDateTime dateOfToday = LocalDateTime.now();
+        DayOfWeek today = dateOfToday.getDayOfWeek();
+
         terminal.clearScreen();
         terminal.setCursorPosition(25, 12);
         terminal.setBackgroundColor(TextColor.ANSI.GREEN);
         terminal.setForegroundColor(TextColor.ANSI.MAGENTA);
-        String gameOver = "GAME OVER, BUT HEY, IT'S FRIDAY BABY!";
+        String gameOver = "GAME OVER, BUT HEY, IT'S " + today + " BABY!";
         for (int i = 0; i < gameOver.length(); i++) {
             terminal.putCharacter(gameOver.charAt(i));
         }
